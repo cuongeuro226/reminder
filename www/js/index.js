@@ -221,6 +221,19 @@ function onDeviceReady() {
         }, 5000);
     }
 
+    // Plugin push notification 
+    var push = PushNotification.init({
+        android: {
+            senderID: "12345679"
+        },
+        ios: {
+            alert: "true",
+            badge: true,
+            sound: 'false'
+        },
+        windows: {}
+    });
+
 }
 
 // function api
