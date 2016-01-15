@@ -23,9 +23,5 @@
             "PACKAGE_NAME": "com.demo_android1.LTN"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.demo_android1.LTN"
-        }
-    }
+    "dependent_plugins": {}
 }

@@ -32,14 +32,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "id": "cordova-plugin-device.device",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
         "file": "plugins/de.appplant.cordova.plugin.background-mode/www/background-mode.js",
         "id": "de.appplant.cordova.plugin.background-mode.BackgroundMode",
         "pluginId": "de.appplant.cordova.plugin.background-mode",
@@ -56,7 +48,6 @@ module.exports.metadata =
     "com.sharinglabs.cordova.plugin.datepicker": "1.1.3",
     "cordova-plugin-statusbar": "2.0.0",
     "cordova-plugin-vibration": "2.0.0",
-    "cordova-plugin-device": "1.1.0",
     "de.appplant.cordova.plugin.background-mode": "0.6.4"
 }
 // BOTTOM OF METADATA
