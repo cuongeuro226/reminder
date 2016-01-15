@@ -66,19 +66,109 @@ $(document).ready(function(){
 	}
 });
 
-
-
-
-
-
-
-
-
 // event
 document.addEventListener("deviceready", onDeviceReady, false);
 
- 
+function alertDismissed() {
+    // do something
+}
+
+function DatePickerClick() {
+    navigator.notification.alert(
+    'You are the winner!',  // message
+    alertDismissed,         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
+}
+
+
+function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+function cameraClick() {
+   
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL
+    });
+    
+}
+
+//function handleDates(elm, options) {
+//    event.stopPropagation();
+//    var currentField = $(elm);
+//    var opts = options || {};
+//    var minVal = opts.min || 0;
+//    var maxVal = opts.max || 0;
+
+//    var myNewDate = Date.parse(currentField.val()) || new Date();
+//    if(typeof myNewDate === "number") {
+//        myNewDate = new Date (myNewDate);
+//    }
+
+//    window.plugins.datePicker.show({
+//        date : myNewDate,
+//        mode : 'datetime',
+//        minDate: Date.parse(minVal),
+//        maxDate: Date.parse(maxVal)
+//    }, function(returnDate) {
+//        if(returnDate !== "") {
+//            var newDate = new Date(returnDate);
+//            currentField.val(getFormattedDate(newDate));
+//        }
+//        currentField.blur();
+//    });
+//}
+
+//function handleTime(elm) {
+//    var currentField = $(elm);
+//    var time = currentField.val();
+//    var myNewTime = new Date();
+
+//    if(time) {
+//        myNewTime.setHours(time.substr(0, 2));
+//        myNewTime.setMinutes(time.substr(3, 2));
+//    }
+//    plugins.datePicker.show({
+//        date : myNewTime,
+//        mode : 'time'
+//    }, function(returnDate) {
+//        if(returnDate !== "") {
+//            var newDate = new Date(returnDate);
+//            currentField.val(getFormattedTime(newDate));
+//        }
+
+//        currentField.blur();
+//    });
+//}
+
+
+
+var options = {
+    date : new Date(),
+    mode : 'date'
+
+
+};
+
+
+function DatePickerOpen() {
+    datePicker.show(option, function(date) {
+        alert("Date:" + date);
+    });
+    navigator.vibrate(2000);
+}
+
+
+
+
 function onDeviceReady() {
+
 	// notice when loadding complete
 	noticeWhenLoadingComplete();
 	// set focus or not focus
@@ -99,7 +189,38 @@ function onDeviceReady() {
 	$('.btn-left').click(btnLeftClick);
 	// click button
 	$('.btnedit').on('click',btnEditclick());
-	
+
+
+    /// Add plugin
+    // Notification
+	console.log(navigator.notification);
+
+    // Camera 
+	console.log(navigator.camera);
+
+    // StatusBar
+    StatusBar.visible();
+
+
+    // Vibration
+    console.log(navigator.vibrate);
+
+    // background mode
+    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
+    // Enable background mode
+    cordova.plugins.backgroundMode.enable();
+
+    // Called when background mode has been activated
+    cordova.plugins.backgroundMode.onactivate = function () {
+        setTimeout(function () {
+            alert("Co vao khong vay????");
+            // Modify the currently displayed notification
+            cordova.plugins.backgroundMode.configure({
+                text:'Running in background for more than 5s now.'
+            });
+        }, 5000);
+    }
+
 }
 
 // function api
