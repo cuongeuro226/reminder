@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html> 
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" charset="utf-8"> </script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+        <script src="js/DatePicker.js"></script>
+        <script src="js/statusbar.js"></script>
+        <script src="js/background-mode.js"></script>
+        <title>Reminder</title>
+    </head>
+    
+    <body>
+    	<!--login-->
+        <div class="login">
+        	
+        </div>
+        <!--end login -->
+        
+    	<!--notice when loadding -->
+    	<div class="notice-box">
+        	<div class="alert " role="alert">Đang đọc dữ liệu.....</div>
+        </div>
+        <!-- end notice when loadding complete-->
+        
+        <!--notice after loadding complete-->
+    <div class="after-load">
+
+        <button id="DatePicker" onclick="DatePickerClick();">What the fuck?</button>
+        <button id="camera" onclick="cameraClick();">Open Camera</button>
+        <button onclick="DatePickerOpen();">Open DatePicker</button>
+        <input id="ad" type="datetime-local"/>
+
+        <!--head -->
+        <div class="head">Remind
+            <button >What the fuck?</button>
+            <!--top_bar -->
+            <!--<div class="alert alert-success full" style="margin: 0px;padding: 0px;"> da bo thay bang dong duoi-->
+            <div class="full">
+                <!--<!--menu left -->
+                <div class="menu-left">
+                    <!-- button setting-->
+                    <img class="buttton-setting" src="./img/setting.png" width="height" height="80%" alt="setting">
+                    <!--end button setting-->
+                </div>
+                <!--end menu left -->
+                <!--<!--menu center -->
+                <div class="amenu-center">
+                    <!-- button sort-->
+
+                    <!--end button sort-->
+                </div>
+                <!--end menu center -->
+                <!-- button setting-->
+                <div class="menu-right">
+                    <!-- button sort-->
+                    <img class="buttton-sort" src="./img/sort.png" width="height" height="80%" alt="sort">
+                    <!--end button sort-->
+                </div>
+                <!-- end button setting-->
+            </div>
+            <!--end top_bar -->
+        </div>
+        <!--end head -->
+        <!-- menu-in-left-->
+        <div class="menu-in-left">
+            <div style="background-color: #faf5e8; width: 100%; height: 10px"></div>
+            <div class="btn-left" style="padding-top: 16px; padding-bottom: 16px; font-size: 30px; background-color: #e9e9e9; text-align: center; vertical-align: middle"> Tìm kiếm </div>
+            <div class="btn-left" style="padding-top: 16px; padding-bottom: 16px; font-size: 30px; background-color: #faf5e8; text-align: center; vertical-align: middle"> Lịch sử</div>
+            <div class="btn-left" style="padding-top: 16px; padding-bottom: 16px; font-size: 30px; background-color: #e9e9e9; text-align: center; vertical-align: middle"> Thông báo</div>
+            <div class="btn-left" style="padding-top: 16px; padding-bottom: 16px; font-size: 30px; background-color: #faf5e8; text-align: center; vertical-align: middle"> Chia sẻ</div>
+            <div class="btn-left" style="padding-top: 16px; padding-bottom: 16px; font-size: 30px; background-color: #e9e9e9; text-align: center; vertical-align: middle; bottom: 0px; position: absolute; left: 0px; width: 100%"> Đăng xuất</div>
+
+
+        </div>
+        <!-- end menu-in-left-->
+        <!-- sort-in-right-->
+        <div class="sort-in-right">
+            <!--<div class="alert alert-success " role="alert" style="margin:0px ; padding:5px"> Xếp theo tên </div>
+            <div class="alert alert-success" role="alert" style="margin:0px ; padding:5px"> Xếp theo thời gian</div>
+            <div class="alert alert-success" role="alert" style="margin:0px ; padding:5px"> Xếp theo đã hoàn thành</div>
+            <div class="alert alert-success" role="alert" style="margin:0px ; padding:5px"> Xếp theo chưa hoàn thành</div>
+            <div class="alert alert-success" role="alert" style="margin:0px ; padding:5px"> Xếp ngẫu nhiên</div>-->
+            <p class=" btn-primary btn-lg full" href="#" role="button" style="margin: 1px; word-wrap: break-word; padding: 5px; font-size: 34px">Xếp theo thời gian </p>
+            <p class=" btn-primary btn-lg full" href="#" role="button" style="margin: 1px; word-wrap: break-word; padding: 5px; font-size: 34px">Xếp theo đã hoàn thành</p>
+            <p class=" btn-primary btn-lg full" href="#" role="button" style="margin: 1px; word-wrap: break-word; padding: 5px; font-size: 34px">Xếp theo chưa hoàn thành </p>
+            <p class=" btn-primary btn-lg full" href="#" role="button" style="margin: 1px; word-wrap: break-word; padding: 5px; font-size: 34px">Xếp ngẫu nhiên </p>
+
+        </div>
+        <!-- end sort-in-right-->
+
+        <!-- content-in-xenter-->
+        <div class="content-in-center">
+            <!-- block in top -->
+            <!--<div style="width:100%; height:3%;background-color:#999"></div>-->
+            <!-- end block in top -->
+
+
+
+
+
+
+
+
+        </div>
+        <!-- end content-in-xenter-->
+        <!-- form-add-task-->
+        <div class="form-add">
+            <!--content-form-add-->
+            <div class="content-form-add">
+                <!--<div style="width:100%; height:auto; text-align:center;border:1px #999 outset; border-radius:5px; padding: 5px">Thêm mới nhiệm vụ </div>-->
+                <input type="text" class="form-control" style="margin-top: 15px; font-size: 30px; padding: 20px" placeholder="Nội dung" id="text" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" style="margin-top: 15px; font-size: 30px; padding: 20px" placeholder="Số lần lặp" id="loop" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" style="margin-top: 15px; font-size: 30px; padding: 20px" placeholder="Ngày thông báo" id="date" aria-describedby="basic-addon3">
+                <input type="text" class="form-control"style="margin-top: 15px; font-size: 30px; padding: 20px" placeholder="Giờ thông báo" id="time" aria-describedby="basic-addon3">
+
+
+
+
+
+            </div>
+            <!--content-form-add-->
+            <!-- button-box-->
+            <div class="button-box">
+                <button type="button" class="btn btn-primary" id="btnHuy" style="margin-right: 10px; font-size: 34px">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnDongy" style="margin-left: 10px; font-size: 34px">Đồng ý</button>
+            </div>
+            <!-- end button-box-->
+        </div>
+        <!-- end form-add-task-->
+
+        <!-- button add task-->
+        <img class="buttton-add btn btn-primary btn-lg " id="bt-add" style="padding: 1px" src="./img/add.png" width="height" alt="Add Task">
+        <!--end button add task-->
+    </div>
+        <!--notice after loadding complete-->
+    </body>
+</html>

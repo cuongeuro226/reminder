@@ -97,4 +97,8 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true" />
   </feature>
+  <feature name="BackgroundMode" >
+  <param name="android-package"
+        value="de.appplant.cordova.plugin.background.BackgroundMode"/>
+  </feature>
 </widget>
