@@ -21,6 +21,9 @@
         },
         "de.appplant.cordova.plugin.background-mode": {
             "PACKAGE_NAME": "com.demo_android1.LTN"
+        },
+        "com.red_folder.phonegap.plugin.backgroundservice": {
+            "PACKAGE_NAME": "com.demo_android1.LTN"
         }
     },
     "dependent_plugins": {}

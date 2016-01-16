@@ -71,6 +71,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function alertDismissed() {
     // do something
+    alert();
 }
 
 function DatePickerClick() {
@@ -152,20 +153,53 @@ function cameraClick() {
 var options = {
     date : new Date(),
     mode : 'date'
-
-
 };
 
 
-function DatePickerOpen() {
-    datePicker.show(option, function(date) {
-        alert("Date:" + date);
-    });
-    navigator.vibrate(2000);
+var myService;
+
+function go() {
+    myService.getStatus(function(r){startService(r)}, function(e){handleError(e)});
+};
+
+function startService(data) {
+    if (data.ServiceRunning) {
+        enableTimer(data);
+    } else {
+        myService.startService(function(r){enableTimer(r)}, function(e){handleError(e)});
+    }
+}
+
+function enableTimer(data) {
+    if (data.TimerEnabled) {
+        allDone();
+    } else {
+        myService.enableTimer(60000, function(r){allDone(r)}, function(e){handleError(e)});
+    }
+}
+
+function allDone() {
+    alert("Service now running");
 }
 
 
+function DatePickerOpen() {
+    navigator.notification.beep(5);
+    navigator.vibrate(8000);
+    navigator.notification.alert(
+   'Thoong bao cc',  // message
+   alertDismissed,         // callback
+   'Fuck you',            // title
+   'Done'                  // buttonName
+);
+}
 
+
+var data = {
+    title : 'What the fuck',
+    message : 'The eo nao',
+    registrationId : '1234567890'
+};
 
 function onDeviceReady() {
 
@@ -199,7 +233,7 @@ function onDeviceReady() {
 	console.log(navigator.camera);
 
     // StatusBar
-    StatusBar.visible();
+    StatusBar.hide();
 
 
     // Vibration
@@ -222,18 +256,8 @@ function onDeviceReady() {
     }
 
     // Plugin push notification 
-    var push = PushNotification.init({
-        android: {
-            senderID: "12345679"
-        },
-        ios: {
-            alert: "true",
-            badge: true,
-            sound: 'false'
-        },
-        windows: {}
-    });
-
+    myService = cordova.plugins.myService;;
+    getStatus();
 }
 
 // function api

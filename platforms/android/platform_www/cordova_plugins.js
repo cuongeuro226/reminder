@@ -39,6 +39,11 @@ module.exports = [
             "cordova.plugins.backgroundMode",
             "plugin.backgroundMode"
         ]
+    },
+    {
+        "file": "plugins/com.red_folder.phonegap.plugin.backgroundservice/www/backgroundService.js",
+        "id": "com.red_folder.phonegap.plugin.backgroundservice.BackgroundService",
+        "pluginId": "com.red_folder.phonegap.plugin.backgroundservice"
     }
 ];
 module.exports.metadata = 
@@ -48,7 +53,8 @@ module.exports.metadata =
     "com.sharinglabs.cordova.plugin.datepicker": "1.1.3",
     "cordova-plugin-statusbar": "2.0.0",
     "cordova-plugin-vibration": "2.0.0",
-    "de.appplant.cordova.plugin.background-mode": "0.6.4"
+    "de.appplant.cordova.plugin.background-mode": "0.6.4",
+    "com.red_folder.phonegap.plugin.backgroundservice": "2.0.0"
 }
 // BOTTOM OF METADATA
 });
